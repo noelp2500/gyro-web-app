@@ -29,16 +29,20 @@ const App = () => {
 
   useEffect(() => {
     if (permissionGranted && window.DeviceMotionEvent) {
-      const handleDeviceMotion = (event) => {
-        if (event.rotationRate) {
-          const { alpha, beta, gamma } = event.rotationRate;
-          setGyroscopeData({ alpha, beta, gamma });
-        }
-      };
-      window.addEventListener("devicemotion", handleDeviceMotion);
-      return () => {
-        window.removeEventListener("devicemotion", handleDeviceMotion);
-      };
+      const intervalId = setInterval(() => {
+        const handleDeviceMotion = (event) => {
+          if (event.rotationRate) {
+            const { alpha, beta, gamma } = event.rotationRate;
+            setGyroscopeData({ alpha, beta, gamma });
+          }
+        };
+        window.addEventListener("devicemotion", handleDeviceMotion);
+        return () => {
+          window.removeEventListener("devicemotion", handleDeviceMotion);
+        };
+      }, 10000);
+
+      return () => clearInterval(intervalId);
     }
   }, [permissionGranted]);
 
@@ -56,15 +60,21 @@ const App = () => {
           <div>
             <p>
               <strong>Alpha (Rotation around Z axis):</strong>{" "}
-              {gyroscopeData.alpha ? gyroscopeData.alpha.toFixed(2) : "N/A"}
+              {gyroscopeData.alpha
+                ? (gyroscopeData.alpha * 57.2958).toFixed(3)
+                : "N/A"}
             </p>
             <p>
               <strong>Beta (Rotation around X axis):</strong>{" "}
-              {gyroscopeData.beta ? gyroscopeData.beta.toFixed(2) : "N/A"}
+              {gyroscopeData.beta
+                ? (gyroscopeData.beta * 57.2958).toFixed(3)
+                : "N/A"}
             </p>
             <p>
               <strong>Gamma (Rotation around Y axis):</strong>{" "}
-              {gyroscopeData.gamma ? gyroscopeData.gamma.toFixed(2) : "N/A"}
+              {gyroscopeData.gamma
+                ? (gyroscopeData.gamma * 57.2958).toFixed(3)
+                : "N/A"}
             </p>
           </div>
         </div>
