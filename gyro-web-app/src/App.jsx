@@ -38,9 +38,7 @@ const App = () => {
       };
       intervalId = setInterval(() => {
         if (window.DeviceMotionEvent) {
-          window.addEventListener("devicemotion", handleDeviceMotion, {
-            once: true,
-          });
+          window.addEventListener("devicemotion", handleDeviceMotion);
         }
       }, 2000);
 
