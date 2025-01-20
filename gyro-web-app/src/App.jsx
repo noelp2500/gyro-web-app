@@ -32,13 +32,22 @@ const App = () => {
       const handleDeviceMotion = (event) => {
         if (event.rotationRate) {
           const { alpha, beta, gamma } = event.rotationRate;
-          const timer = setTimeout(() => {
-            setGyroscopeData({ x: alpha, y: beta, z: gamma });
-          }, 10000);
+
+          // Update gyroscope data immediately
+          setGyroscopeData({ x: alpha, y: beta, z: gamma });
         }
       };
-      window.addEventListener("devicemotion", handleDeviceMotion);
+
+      // Set interval to trigger every 10 seconds
+      const motionInterval = setInterval(() => {
+        if (window.DeviceMotionEvent) {
+          window.addEventListener("devicemotion", handleDeviceMotion);
+        }
+      }, 10000); // Every 10 seconds
+
+      // Cleanup the interval when the component is unmounted or permission is revoked
       return () => {
+        clearInterval(motionInterval);
         window.removeEventListener("devicemotion", handleDeviceMotion);
       };
     }
