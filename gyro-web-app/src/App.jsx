@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 
 const App = () => {
   const [gyroscopeData, setGyroscopeData] = useState({
-    alpha: null,
-    beta: null,
-    gamma: null,
+    x: null,
+    y: null,
+    z: null,
   });
   const [permissionGranted, setPermissionGranted] = useState(false);
   const [permissionRequested, setPermissionRequested] = useState(false);
@@ -31,9 +31,9 @@ const App = () => {
     if (permissionGranted && window.DeviceMotionEvent) {
       const handleDeviceMotion = (event) => {
         if (event.rotationRate) {
-          const { a, b, g } = event.rotationRate;
+          const { alpha, beta, gamma } = event.rotationRate;
           setInterval(() => {
-            setGyroscopeData({ a, b, g });
+            setGyroscopeData({ x: alpha, y: beta, z: gamma });
           }, 5000);
         }
       };
@@ -60,21 +60,15 @@ const App = () => {
           <div>
             <p>
               <strong>Alpha (Rotation around Z axis):</strong>{" "}
-              {gyroscopeData.alpha
-                ? (gyroscopeData.alpha * 57.2958).toFixed(3)
-                : "N/A"}
+              {gyroscopeData.x ? (gyroscopeData.x * 57.2958).toFixed(3) : "N/A"}
             </p>
             <p>
               <strong>Beta (Rotation around X axis):</strong>{" "}
-              {gyroscopeData.beta
-                ? (gyroscopeData.beta * 57.2958).toFixed(3)
-                : "N/A"}
+              {gyroscopeData.y ? (gyroscopeData.y * 57.2958).toFixed(3) : "N/A"}
             </p>
             <p>
               <strong>Gamma (Rotation around Y axis):</strong>{" "}
-              {gyroscopeData.gamma
-                ? (gyroscopeData.gamma * 57.2958).toFixed(3)
-                : "N/A"}
+              {gyroscopeData.z ? (gyroscopeData.z * 57.2958).toFixed(3) : "N/A"}
             </p>
           </div>
         </div>
