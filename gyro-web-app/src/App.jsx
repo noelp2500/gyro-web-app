@@ -28,22 +28,33 @@ const App = () => {
   };
 
   useEffect(() => {
+    let intervalId;
+
     if (permissionGranted && window.DeviceMotionEvent) {
       const handleDeviceMotion = (event) => {
         if (event.rotationRate) {
-          setTimeout(() => {
-            const { alpha, beta, gamma } = event.rotationRate;
-            setGyroscopeData({ alpha, beta, gamma });
-          }, 20000);
+          const { alpha, beta, gamma } = event.rotationRate;
+          setGyroscopeData({ alpha, beta, gamma });
         }
       };
-      setTimeout(() => {
-        window.addEventListener("devicemotion", handleDeviceMotion);
-      }, 20000);
+
+      intervalId = setInterval(() => {
+        if (window.DeviceMotionEvent) {
+          // Trigger device motion to read data
+          window.addEventListener("devicemotion", handleDeviceMotion, {
+            once: true,
+          });
+        }
+      }, 20000); // Set the interval to 20 seconds
+
+      // Cleanup on unmount
       return () => {
+        clearInterval(intervalId);
         window.removeEventListener("devicemotion", handleDeviceMotion);
       };
     }
+
+    return () => clearInterval(intervalId); // Cleanup interval on unmount
   }, [permissionGranted]);
 
   return (
