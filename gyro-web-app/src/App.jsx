@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import ReactSpeedometer from "react-d3-speedometer";
 const App = () => {
   const [gyroscopeData, setGyroscopeData] = useState({
+    z: null,
     x: null,
     y: null,
-    z: null,
   });
   const [permissionGranted, setPermissionGranted] = useState(false);
   const [permissionRequested, setPermissionRequested] = useState(false);
@@ -32,7 +32,7 @@ const App = () => {
       const handleDeviceMotion = (event) => {
         if (event.rotationRate) {
           const { alpha, beta, gamma } = event.rotationRate;
-          setGyroscopeData({ x: alpha, y: beta, z: gamma });
+          setGyroscopeData({ z: alpha, x: beta, y: gamma });
         }
       };
       window.addEventListener("devicemotion", handleDeviceMotion);
@@ -58,6 +58,39 @@ const App = () => {
               <strong>Alpha (Rotation around Z axis):</strong>{" "}
               <ReactSpeedometer
                 maxValue={25}
+                minValue={0}
+                value={
+                  gyroscopeData.z
+                    ? (gyroscopeData.z * 57.2958).toFixed(3)
+                    : "N/A"
+                }
+                currentValueText="Z axis"
+                segments={3}
+                customSegmentLabels={[
+                  {
+                    text: "Very Good",
+                    position: "INSIDE",
+                    color: "#555",
+                  },
+                  {
+                    text: "Ok",
+                    position: "INSIDE",
+                    color: "#555",
+                    fontSize: "19px",
+                  },
+                  {
+                    text: "Very Bad",
+                    position: "INSIDE",
+                    color: "#555",
+                  },
+                ]}
+              />
+            </p>
+            <p>
+              <strong>Beta (Rotation around X axis):</strong>{" "}
+              <ReactSpeedometer
+                maxValue={25}
+                minValue={0}
                 value={
                   gyroscopeData.x
                     ? (gyroscopeData.x * 57.2958).toFixed(3)
@@ -67,33 +100,57 @@ const App = () => {
                 segments={3}
                 customSegmentLabels={[
                   {
-                    text: "Very Bad",
+                    text: "Very Good",
                     position: "INSIDE",
                     color: "#555",
                   },
-
                   {
                     text: "Ok",
                     position: "INSIDE",
                     color: "#555",
                     fontSize: "19px",
                   },
-
                   {
-                    text: "Very Good",
+                    text: "Very Bad",
                     position: "INSIDE",
                     color: "#555",
                   },
                 ]}
               />
-            </p>
-            <p>
-              <strong>Beta (Rotation around X axis):</strong>{" "}
-              {gyroscopeData.y ? (gyroscopeData.y * 57.2958).toFixed(3) : "N/A"}
+              {gyroscopeData.x ? (gyroscopeData.x * 57.2958).toFixed(3) : "N/A"}
             </p>
             <p>
               <strong>Gamma (Rotation around Y axis):</strong>{" "}
-              {gyroscopeData.z ? (gyroscopeData.z * 57.2958).toFixed(3) : "N/A"}
+              <ReactSpeedometer
+                maxValue={25}
+                minValue={0}
+                value={
+                  gyroscopeData.y
+                    ? (gyroscopeData.y * 57.2958).toFixed(3)
+                    : "N/A"
+                }
+                currentValueText="Z axis"
+                segments={3}
+                customSegmentLabels={[
+                  {
+                    text: "Very Good",
+                    position: "INSIDE",
+                    color: "#555",
+                  },
+                  {
+                    text: "Ok",
+                    position: "INSIDE",
+                    color: "#555",
+                    fontSize: "19px",
+                  },
+                  {
+                    text: "Very Bad",
+                    position: "INSIDE",
+                    color: "#555",
+                  },
+                ]}
+              />
+              {gyroscopeData.y ? (gyroscopeData.y * 57.2958).toFixed(3) : "N/A"}
             </p>
           </div>
         </div>
