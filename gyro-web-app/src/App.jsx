@@ -29,20 +29,21 @@ const App = () => {
 
   useEffect(() => {
     if (permissionGranted && window.DeviceMotionEvent) {
+      const handleDeviceMotion = (event) => {
+        if (event.rotationRate) {
+          const { alpha, beta, gamma } = event.rotationRate;
+          setGyroscopeData({ alpha, beta, gamma });
+        }
+      };
+
       const intervalId = setInterval(() => {
-        const handleDeviceMotion = (event) => {
-          if (event.rotationRate) {
-            const { alpha, beta, gamma } = event.rotationRate;
-            setGyroscopeData({ alpha, beta, gamma });
-          }
-        };
         window.addEventListener("devicemotion", handleDeviceMotion);
-        return () => {
-          window.removeEventListener("devicemotion", handleDeviceMotion);
-        };
       }, 10000);
 
-      return () => clearInterval(intervalId);
+      return () => {
+        clearInterval(intervalId);
+        window.removeEventListener("devicemotion", handleDeviceMotion);
+      };
     }
   }, [permissionGranted]);
 
