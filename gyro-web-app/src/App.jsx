@@ -59,6 +59,8 @@ const App = () => {
               <ReactSpeedometer
                 maxValue={10}
                 minValue={-10}
+                width={200}
+                height={200}
                 value={
                   gyroscopeData.z
                     ? (gyroscopeData.z * 57.2958).toFixed(3)
@@ -91,12 +93,14 @@ const App = () => {
               <ReactSpeedometer
                 maxValue={10}
                 minValue={-10}
+                width={200}
+                height={200}
                 value={
                   gyroscopeData.x
                     ? (gyroscopeData.x * 57.2958).toFixed(3)
                     : "N/A"
                 }
-                currentValueText="Z axis"
+                currentValueText="X axis"
                 segments={3}
                 customSegmentLabels={[
                   {
@@ -124,12 +128,14 @@ const App = () => {
               <ReactSpeedometer
                 maxValue={10}
                 minValue={-10}
+                width={200}
+                height={200}
                 value={
                   gyroscopeData.y
                     ? (gyroscopeData.y * 57.2958).toFixed(3)
                     : "N/A"
                 }
-                currentValueText="Z axis"
+                currentValueText="Y axis"
                 segments={3}
                 customSegmentLabels={[
                   {
