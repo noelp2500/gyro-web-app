@@ -63,7 +63,8 @@ const App = () => {
                     ? (gyroscopeData.x * 57.2958).toFixed(3)
                     : "N/A"
                 }
-                currentValueText="Happiness Level"
+                currentValueText="Z axis"
+                segments={3}
                 customSegmentLabels={[
                   {
                     text: "Very Bad",
