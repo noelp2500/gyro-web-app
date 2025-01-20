@@ -4,7 +4,7 @@ const App = () => {
   const [gyroscopeData, setGyroscopeData] = useState({
     x: null,
     y: null,
-    z: null,
+    gamma: null,
   });
   const [permissionGranted, setPermissionGranted] = useState(false);
   const [permissionRequested, setPermissionRequested] = useState(false);
@@ -29,18 +29,24 @@ const App = () => {
 
   useEffect(() => {
     if (permissionGranted && window.DeviceMotionEvent) {
+      // Create a function that handles device motion data
       const handleDeviceMotion = (event) => {
         if (event.rotationRate) {
           const { alpha, beta, gamma } = event.rotationRate;
-          setInterval(() => {
-            setGyroscopeData({ x: alpha, y: beta, z: gamma });
-          }, 5000);
+          setGyroscopeData({ alpha, beta, gamma });
         }
       };
 
-      window.addEventListener("devicemotion", handleDeviceMotion);
+      // Set up an interval to update every 10 seconds
+      const intervalId = setInterval(() => {
+        window.addEventListener("devicemotion", handleDeviceMotion, {
+          once: true,
+        });
+      }, 10000); // 10 seconds
 
+      // Clean up the interval when component unmounts
       return () => {
+        clearInterval(intervalId);
         window.removeEventListener("devicemotion", handleDeviceMotion);
       };
     }
@@ -60,15 +66,21 @@ const App = () => {
           <div>
             <p>
               <strong>Alpha (Rotation around Z axis):</strong>{" "}
-              {gyroscopeData.x ? (gyroscopeData.x * 57.2958).toFixed(3) : "N/A"}
+              {gyroscopeData.alpha
+                ? (gyroscopeData.alpha * 57.2958).toFixed(3)
+                : "N/A"}
             </p>
             <p>
               <strong>Beta (Rotation around X axis):</strong>{" "}
-              {gyroscopeData.y ? (gyroscopeData.y * 57.2958).toFixed(3) : "N/A"}
+              {gyroscopeData.beta
+                ? (gyroscopeData.beta * 57.2958).toFixed(3)
+                : "N/A"}
             </p>
             <p>
               <strong>Gamma (Rotation around Y axis):</strong>{" "}
-              {gyroscopeData.z ? (gyroscopeData.z * 57.2958).toFixed(3) : "N/A"}
+              {gyroscopeData.gamma
+                ? (gyroscopeData.gamma * 57.2958).toFixed(3)
+                : "N/A"}
             </p>
           </div>
         </div>
