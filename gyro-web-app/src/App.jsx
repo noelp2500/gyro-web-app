@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import ReactSpeedometer from "react-d3-speedometer";
 const App = () => {
   const [gyroscopeData, setGyroscopeData] = useState({
     x: null,
@@ -32,22 +32,11 @@ const App = () => {
       const handleDeviceMotion = (event) => {
         if (event.rotationRate) {
           const { alpha, beta, gamma } = event.rotationRate;
-
-          // Update gyroscope data immediately
           setGyroscopeData({ x: alpha, y: beta, z: gamma });
         }
       };
-
-      // Set interval to trigger every 10 seconds
-      const motionInterval = setInterval(() => {
-        if (window.DeviceMotionEvent) {
-          window.addEventListener("devicemotion", handleDeviceMotion);
-        }
-      }, 10000); // Every 10 seconds
-
-      // Cleanup the interval when the component is unmounted or permission is revoked
+      window.addEventListener("devicemotion", handleDeviceMotion);
       return () => {
-        clearInterval(motionInterval);
         window.removeEventListener("devicemotion", handleDeviceMotion);
       };
     }
@@ -67,7 +56,35 @@ const App = () => {
           <div>
             <p>
               <strong>Alpha (Rotation around Z axis):</strong>{" "}
-              {gyroscopeData.x ? (gyroscopeData.x * 57.2958).toFixed(3) : "N/A"}
+              <ReactSpeedometer
+                maxValue={25}
+                value={
+                  gyroscopeData.x
+                    ? (gyroscopeData.x * 57.2958).toFixed(3)
+                    : "N/A"
+                }
+                currentValueText="Happiness Level"
+                customSegmentLabels={[
+                  {
+                    text: "Very Bad",
+                    position: "INSIDE",
+                    color: "#555",
+                  },
+
+                  {
+                    text: "Ok",
+                    position: "INSIDE",
+                    color: "#555",
+                    fontSize: "19px",
+                  },
+
+                  {
+                    text: "Very Good",
+                    position: "INSIDE",
+                    color: "#555",
+                  },
+                ]}
+              />
             </p>
             <p>
               <strong>Beta (Rotation around X axis):</strong>{" "}
