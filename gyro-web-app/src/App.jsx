@@ -38,12 +38,14 @@ const App = () => {
       };
       intervalId = setInterval(() => {
         if (window.DeviceMotionEvent) {
-          window.addEventListener("devicemotion", handleDeviceMotion);
+          window.addEventListener("devicemotion", handleDeviceMotion, {
+            once: true,
+          });
         }
       }, 2000);
 
       return () => {
-        // clearInterval(intervalId);
+        clearInterval(intervalId);
         window.removeEventListener("devicemotion", handleDeviceMotion);
       };
     }
