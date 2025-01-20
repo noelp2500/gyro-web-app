@@ -45,7 +45,7 @@ const App = () => {
           window.removeEventListener("devicemotion", handleDeviceMotion); // Clean previous listeners
           window.addEventListener("devicemotion", handleDeviceMotion); // Add listener to capture motion data
         }
-      }, 20000); // Set the interval to 20 seconds
+      }, 2000); // Set the interval to 20 seconds
 
       // Cleanup interval and event listener on unmount
       return () => {
