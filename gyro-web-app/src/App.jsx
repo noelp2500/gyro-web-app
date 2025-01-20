@@ -8,6 +8,11 @@ const App = () => {
   });
   const [permissionGranted, setPermissionGranted] = useState(false);
   const [permissionRequested, setPermissionRequested] = useState(false);
+  const [rawData, setRawData] = useState({
+    alpha: null,
+    beta: null,
+    gamma: null,
+  });
 
   const requestPermission = async () => {
     if (typeof DeviceMotionEvent.requestPermission === "function") {
@@ -31,26 +36,25 @@ const App = () => {
     const handleDeviceMotion = (event) => {
       if (event.rotationRate) {
         const { alpha, beta, gamma } = event.rotationRate;
-        setGyroscopeData({ alpha, beta, gamma });
+        setRawData({ alpha, beta, gamma }); // Store raw data
       }
     };
 
-    let intervalId;
     if (permissionGranted && window.DeviceMotionEvent) {
-      intervalId = setInterval(() => {
-        window.addEventListener("devicemotion", handleDeviceMotion);
-      }, 20000);
+      window.addEventListener("devicemotion", handleDeviceMotion);
 
+      // Set up an interval to update the UI every 20 seconds with the raw data
+      const intervalId = setInterval(() => {
+        setGyroscopeData({ ...rawData }); // Update UI with the latest stored data
+      }, 20000); // 20 seconds interval
+
+      // Cleanup event listener and interval on unmount
       return () => {
-        clearInterval(intervalId);
         window.removeEventListener("devicemotion", handleDeviceMotion);
+        clearInterval(intervalId); // Clear interval on cleanup
       };
     }
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [permissionGranted]);
+  }, [permissionGranted, rawData]); // Run effect when permission is granted or rawData changes
 
   return (
     <>
