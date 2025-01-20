@@ -28,28 +28,18 @@ const App = () => {
   };
 
   useEffect(() => {
-    const handleDeviceMotion = (event) => {
-      if (event.rotationRate) {
-        const { alpha, beta, gamma } = event.rotationRate;
-        setGyroscopeData({ alpha, beta, gamma });
-      }
-    };
-
-    let intervalId;
     if (permissionGranted && window.DeviceMotionEvent) {
-      intervalId = setInterval(() => {
-        window.addEventListener("devicemotion", handleDeviceMotion);
-      }, 20000);
-
+      const handleDeviceMotion = (event) => {
+        if (event.rotationRate) {
+          const { alpha, beta, gamma } = event.rotationRate;
+          setGyroscopeData({ alpha, beta, gamma });
+        }
+      };
+      window.addEventListener("devicemotion", handleDeviceMotion);
       return () => {
-        clearInterval(intervalId);
         window.removeEventListener("devicemotion", handleDeviceMotion);
       };
     }
-
-    return () => {
-      clearInterval(intervalId);
-    };
   }, [permissionGranted]);
 
   return (
@@ -66,21 +56,15 @@ const App = () => {
           <div>
             <p>
               <strong>Alpha (Rotation around Z axis):</strong>{" "}
-              {gyroscopeData.alpha
-                ? gyroscopeData.alpha.toFixed(2) * 57.2958
-                : "N/A"}
+              {gyroscopeData.alpha ? gyroscopeData.alpha.toFixed(2) : "N/A"}
             </p>
             <p>
               <strong>Beta (Rotation around X axis):</strong>{" "}
-              {gyroscopeData.beta
-                ? gyroscopeData.beta.toFixed(2) * 57.2958
-                : "N/A"}
+              {gyroscopeData.beta ? gyroscopeData.beta.toFixed(2) : "N/A"}
             </p>
             <p>
               <strong>Gamma (Rotation around Y axis):</strong>{" "}
-              {gyroscopeData.gamma
-                ? gyroscopeData.gamma.toFixed(2) * 57.2958
-                : "N/A"}
+              {gyroscopeData.gamma ? gyroscopeData.gamma.toFixed(2) : "N/A"}
             </p>
           </div>
         </div>
