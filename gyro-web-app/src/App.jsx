@@ -28,7 +28,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    // Function to handle gyroscope data and update state
     const handleDeviceMotion = (event) => {
       if (event.rotationRate) {
         const { alpha, beta, gamma } = event.rotationRate;
@@ -40,7 +39,7 @@ const App = () => {
     if (permissionGranted && window.DeviceMotionEvent) {
       intervalId = setInterval(() => {
         window.addEventListener("devicemotion", handleDeviceMotion);
-      }, 2000);
+      }, 20000);
 
       return () => {
         clearInterval(intervalId);
