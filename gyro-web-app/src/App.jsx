@@ -35,9 +35,9 @@ const App = () => {
           setGyroscopeData({ alpha, beta, gamma });
         }
       };
-      setInterval(() => {
-        window.addEventListener("devicemotion", handleDeviceMotion);
-      }, 3000);
+
+      window.addEventListener("devicemotion", handleDeviceMotion);
+
       return () => {
         window.removeEventListener("devicemotion", handleDeviceMotion);
       };
