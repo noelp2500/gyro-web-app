@@ -57,8 +57,8 @@ const App = () => {
             <p>
               <strong>Alpha (Rotation around Z axis):</strong>{" "}
               <ReactSpeedometer
-                maxValue={25}
-                minValue={0}
+                maxValue={10}
+                minValue={-10}
                 value={
                   gyroscopeData.z
                     ? (gyroscopeData.z * 57.2958).toFixed(3)
@@ -89,8 +89,8 @@ const App = () => {
             <p>
               <strong>Beta (Rotation around X axis):</strong>{" "}
               <ReactSpeedometer
-                maxValue={25}
-                minValue={0}
+                maxValue={10}
+                minValue={-10}
                 value={
                   gyroscopeData.x
                     ? (gyroscopeData.x * 57.2958).toFixed(3)
@@ -122,8 +122,8 @@ const App = () => {
             <p>
               <strong>Gamma (Rotation around Y axis):</strong>{" "}
               <ReactSpeedometer
-                maxValue={25}
-                minValue={0}
+                maxValue={10}
+                minValue={-10}
                 value={
                   gyroscopeData.y
                     ? (gyroscopeData.y * 57.2958).toFixed(3)
