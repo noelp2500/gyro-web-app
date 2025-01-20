@@ -40,16 +40,14 @@ const App = () => {
 
       intervalId = setInterval(() => {
         if (window.DeviceMotionEvent) {
-          // Trigger device motion to read data
           window.addEventListener("devicemotion", handleDeviceMotion, {
             once: true,
           });
         }
-      }, 20000); // Set the interval to 20 seconds
+      }, 2000);
 
-      // Cleanup on unmount
       return () => {
-        clearInterval(intervalId);
+        // clearInterval(intervalId);
         window.removeEventListener("devicemotion", handleDeviceMotion);
       };
     }
