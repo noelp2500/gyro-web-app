@@ -28,28 +28,29 @@ const App = () => {
   };
 
   useEffect(() => {
-    let intervalId;
     if (permissionGranted && window.DeviceMotionEvent) {
-      intervalId = setInterval(() => {
-        const handleDeviceMotion = (event) => {
-          if (event.rotationRate) {
-            const { alpha, beta, gamma } = event.rotationRate;
-            setGyroscopeData({ alpha, beta, gamma });
-          }
-        };
-        if (window.DeviceMotionEvent) {
-          window.addEventListener("devicemotion", handleDeviceMotion);
+      const handleDeviceMotion = (event) => {
+        if (event.rotationRate) {
+          const { alpha, beta, gamma } = event.rotationRate;
+          setGyroscopeData({ alpha, beta, gamma });
         }
-      }, 2000);
-
+      };
+      window.addEventListener("devicemotion", handleDeviceMotion);
       return () => {
-        clearInterval(intervalId);
         window.removeEventListener("devicemotion", handleDeviceMotion);
       };
     }
-
-    return () => clearInterval(intervalId); // Cleanup interval on unmount
   }, [permissionGranted]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setGyroscopeData((prevData) => ({ ...prevData }));
+    }, 10000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   return (
     <>
