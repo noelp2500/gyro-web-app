@@ -8,6 +8,7 @@ const App = () => {
   });
   const [permissionGranted, setPermissionGranted] = useState(false);
   const [permissionRequested, setPermissionRequested] = useState(false);
+  const [flag, setFlag] = useState(true);
 
   const requestPermission = async () => {
     if (typeof DeviceMotionEvent.requestPermission === "function") {
@@ -26,7 +27,9 @@ const App = () => {
     }
     setPermissionRequested(true);
   };
-
+  setInterval(() => {
+    setFlag(!flag);
+  }, 10000);
   useEffect(() => {
     if (permissionGranted && window.DeviceMotionEvent) {
       // Create a function that handles device motion data
@@ -50,7 +53,7 @@ const App = () => {
         window.removeEventListener("devicemotion", handleDeviceMotion);
       };
     }
-  }, [permissionGranted]);
+  }, [permissionGranted, flag]);
 
   return (
     <>
