@@ -32,7 +32,9 @@ const App = () => {
       const handleDeviceMotion = (event) => {
         if (event.rotationRate) {
           const { alpha, beta, gamma } = event.rotationRate;
-          setGyroscopeData({ x: alpha, y: beta, z: gamma });
+          const timer = setTimeout(() => {
+            setGyroscopeData({ x: alpha, y: beta, z: gamma });
+          }, 10000);
         }
       };
       window.addEventListener("devicemotion", handleDeviceMotion);
