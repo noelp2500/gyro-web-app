@@ -29,7 +29,6 @@ const App = () => {
 
   useEffect(() => {
     let intervalId;
-
     if (permissionGranted && window.DeviceMotionEvent) {
       const handleDeviceMotion = (event) => {
         if (event.rotationRate) {
@@ -37,12 +36,9 @@ const App = () => {
           setGyroscopeData({ alpha, beta, gamma });
         }
       };
-
       intervalId = setInterval(() => {
         if (window.DeviceMotionEvent) {
-          window.addEventListener("devicemotion", handleDeviceMotion, {
-            once: true,
-          });
+          window.addEventListener("devicemotion", handleDeviceMotion);
         }
       }, 2000);
 
