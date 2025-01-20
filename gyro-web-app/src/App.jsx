@@ -35,22 +35,12 @@ const App = () => {
           setGyroscopeData({ alpha, beta, gamma });
         }
       };
-      window.addEventListener("devicemotion", handleDeviceMotion);
+      // window.addEventListener("devicemotion", handleDeviceMotion);
       return () => {
         window.removeEventListener("devicemotion", handleDeviceMotion);
       };
     }
   }, [permissionGranted]);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setGyroscopeData((prevData) => ({ ...prevData }));
-    }, 10000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
 
   return (
     <>
