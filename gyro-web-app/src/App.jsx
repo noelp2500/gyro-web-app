@@ -32,16 +32,13 @@ const App = () => {
       const handleDeviceMotion = (event) => {
         if (event.rotationRate) {
           const { alpha, beta, gamma } = event.rotationRate;
-          setGyroscopeData({ alpha, beta, gamma });
+          setTimeout(() => {
+            setGyroscopeData({ alpha, beta, gamma });
+          }, 20000);
         }
       };
-
-      const intervalId = setInterval(() => {
-        window.addEventListener("devicemotion", handleDeviceMotion);
-      }, 10000);
-
+      window.addEventListener("devicemotion", handleDeviceMotion);
       return () => {
-        clearInterval(intervalId);
         window.removeEventListener("devicemotion", handleDeviceMotion);
       };
     }
