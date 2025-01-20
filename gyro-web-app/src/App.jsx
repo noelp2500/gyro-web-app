@@ -31,13 +31,15 @@ const App = () => {
     if (permissionGranted && window.DeviceMotionEvent) {
       const handleDeviceMotion = (event) => {
         if (event.rotationRate) {
-          const { alpha, beta, gamma } = event.rotationRate;
           setTimeout(() => {
+            const { alpha, beta, gamma } = event.rotationRate;
             setGyroscopeData({ alpha, beta, gamma });
           }, 20000);
         }
       };
-      window.addEventListener("devicemotion", handleDeviceMotion);
+      setTimeout(() => {
+        window.addEventListener("devicemotion", handleDeviceMotion);
+      }, 20000);
       return () => {
         window.removeEventListener("devicemotion", handleDeviceMotion);
       };
