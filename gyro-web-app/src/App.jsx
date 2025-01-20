@@ -7,45 +7,41 @@ const App = () => {
     gamma: null,
   });
   const [permissionGranted, setPermissionGranted] = useState(false);
+  const [permissionRequested, setPermissionRequested] = useState(false);
+
+  // Function to request permission for accessing motion data
+  const requestPermission = async () => {
+    if (typeof DeviceMotionEvent.requestPermission === "function") {
+      try {
+        const response = await DeviceMotionEvent.requestPermission();
+        if (response === "granted") {
+          setPermissionGranted(true);
+        } else {
+          console.log("Permission denied");
+        }
+      } catch (err) {
+        console.error("Error requesting permission: ", err);
+      }
+    } else {
+      // If the browser doesn't need permission request (non-iOS or older iOS)
+      setPermissionGranted(true);
+    }
+    setPermissionRequested(true);
+  };
 
   useEffect(() => {
-    // Function to request permission for accessing device motion data on iOS
-    const requestMotionPermission = async () => {
-      if (typeof DeviceMotionEvent.requestPermission === "function") {
-        try {
-          const response = await DeviceMotionEvent.requestPermission();
-          if (response === "granted") {
-            setPermissionGranted(true);
-          } else {
-            console.log("Permission denied");
-          }
-        } catch (err) {
-          console.error("Error requesting permission: ", err);
+    if (permissionGranted && window.DeviceMotionEvent) {
+      const handleDeviceMotion = (event) => {
+        if (event.rotationRate) {
+          const { alpha, beta, gamma } = event.rotationRate;
+          setGyroscopeData({ alpha, beta, gamma });
         }
-      } else {
-        // If permission request isn't needed (non-iOS or older iOS)
-        setPermissionGranted(true);
-      }
-    };
+      };
 
-    // Request permission on initial load
-    if (window.DeviceMotionEvent) {
-      requestMotionPermission();
-    } else {
-      console.log("DeviceMotionEvent is not supported on this device/browser.");
-    }
-
-    // Add event listener for device motion once permission is granted
-    const handleDeviceMotion = (event) => {
-      if (event.rotationRate) {
-        const { alpha, beta, gamma } = event.rotationRate;
-        setGyroscopeData({ alpha, beta, gamma });
-      }
-    };
-
-    // Add event listener if permission is granted
-    if (permissionGranted) {
+      // Start listening for device motion data after permission is granted
       window.addEventListener("devicemotion", handleDeviceMotion);
+
+      // Cleanup the event listener when the component unmounts
       return () => {
         window.removeEventListener("devicemotion", handleDeviceMotion);
       };
@@ -55,7 +51,12 @@ const App = () => {
   return (
     <>
       <h1>Gyroscope Reader</h1>
-      {permissionGranted ? (
+      {!permissionRequested ? (
+        <div>
+          <h2>Request Permission to Access Gyroscope</h2>
+          <button onClick={requestPermission}>Grant Permission</button>
+        </div>
+      ) : permissionGranted ? (
         <div>
           <h2>Gyroscope Data</h2>
           <div>
@@ -75,8 +76,8 @@ const App = () => {
         </div>
       ) : (
         <div>
-          <h2>Permission to access motion data is required</h2>
-          <p>Please grant permission to access the gyroscope data.</p>
+          <h2>Permission Denied</h2>
+          <p>You need to grant permission to access the gyroscope data.</p>
         </div>
       )}
     </>
