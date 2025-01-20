@@ -29,6 +29,7 @@ const App = () => {
 
   useEffect(() => {
     let intervalId;
+
     if (permissionGranted && window.DeviceMotionEvent) {
       const handleDeviceMotion = (event) => {
         if (event.rotationRate) {
@@ -36,12 +37,17 @@ const App = () => {
           setGyroscopeData({ alpha, beta, gamma });
         }
       };
-      intervalId = setInterval(() => {
-        if (window.DeviceMotionEvent) {
-          window.addEventListener("devicemotion", handleDeviceMotion);
-        }
-      }, 2000);
 
+      // Initialize interval to fetch gyroscope data every 20 seconds
+      intervalId = setInterval(() => {
+        // Manually trigger the motion event handler (no need to use addEventListener)
+        if (window.DeviceMotionEvent) {
+          window.removeEventListener("devicemotion", handleDeviceMotion); // Clean previous listeners
+          window.addEventListener("devicemotion", handleDeviceMotion); // Add listener to capture motion data
+        }
+      }, 20000); // Set the interval to 20 seconds
+
+      // Cleanup interval and event listener on unmount
       return () => {
         clearInterval(intervalId);
         window.removeEventListener("devicemotion", handleDeviceMotion);
