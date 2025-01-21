@@ -53,7 +53,16 @@ const App = () => {
       ) : permissionGranted ? (
         <div>
           {/* <h3>Gyroscope Data</h3> */}
-          <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+              marginLeft: "10%",
+            }}
+          >
             <p>
               <strong>
                 Alpha (Rotation around Z axis):{" "}
