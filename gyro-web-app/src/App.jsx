@@ -52,7 +52,7 @@ const App = () => {
         </div>
       ) : permissionGranted ? (
         <div>
-          <h3>Gyroscope Data</h3>
+          {/* <h3>Gyroscope Data</h3> */}
           <div>
             <p>
               <strong>
