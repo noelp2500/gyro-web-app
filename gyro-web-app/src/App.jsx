@@ -72,28 +72,44 @@ const App = () => {
               </strong>{" "}
               <ReactSpeedometer
                 needleHeightRatio={0.6}
-                segmentColors={["limegreen", "gold", "tomato"]}
+                segmentColors={[
+                  "tomato",
+                  "limegreen",
+                  "gold",
+                  "tomato",
+                  "limegreen",
+                ]}
                 maxValue={2}
                 minValue={-2}
                 width={200}
                 height={175}
                 value={gyroscopeData.z ? gyroscopeData.z.toFixed(3) : "N/A"}
                 currentValueText="Z axis"
-                segments={3}
+                segments={5}
                 customSegmentLabels={[
                   {
-                    text: "Good",
+                    text: "",
                     position: "INSIDE",
                     color: "#555",
                   },
                   {
-                    text: "Ok",
+                    text: "",
+                    position: "INSIDE",
+                    color: "#555",
+                  },
+                  {
+                    text: "",
                     position: "INSIDE",
                     color: "#555",
                     fontSize: "19px",
                   },
                   {
-                    text: "Bad",
+                    text: "",
+                    position: "INSIDE",
+                    color: "#555",
+                  },
+                  {
+                    text: "",
                     position: "INSIDE",
                     color: "#555",
                   },
@@ -106,7 +122,13 @@ const App = () => {
                 {gyroscopeData.x ? gyroscopeData.x.toFixed(3) : "N/A"} degrees
               </strong>{" "}
               <ReactSpeedometer
-                segmentColors={["limegreen", "gold", "tomato"]}
+                segmentColors={[
+                  "tomato",
+                  "limegreen",
+                  "gold",
+                  "tomato",
+                  "limegreen",
+                ]}
                 needleHeightRatio={0.6}
                 maxValue={2}
                 minValue={-2}
@@ -114,21 +136,31 @@ const App = () => {
                 height={175}
                 value={gyroscopeData.x ? gyroscopeData.x.toFixed(3) : "N/A"}
                 currentValueText="X axis"
-                segments={3}
+                segments={5}
                 customSegmentLabels={[
                   {
-                    text: "Good",
+                    text: "",
                     position: "INSIDE",
                     color: "#555",
                   },
                   {
-                    text: "Ok",
+                    text: "",
+                    position: "INSIDE",
+                    color: "#555",
+                  },
+                  {
+                    text: "",
                     position: "INSIDE",
                     color: "#555",
                     fontSize: "19px",
                   },
                   {
-                    text: "Bad",
+                    text: "",
+                    position: "INSIDE",
+                    color: "#555",
+                  },
+                  {
+                    text: "",
                     position: "INSIDE",
                     color: "#555",
                   },
@@ -141,7 +173,13 @@ const App = () => {
                 {gyroscopeData.y ? gyroscopeData.y.toFixed(3) : "N/A"} degrees
               </strong>{" "}
               <ReactSpeedometer
-                segmentColors={["limegreen", "gold", "tomato"]}
+                segmentColors={[
+                  "tomato",
+                  "limegreen",
+                  "gold",
+                  "tomato",
+                  "limegreen",
+                ]}
                 needleHeightRatio={0.6}
                 maxValue={2}
                 minValue={-2}
@@ -149,21 +187,31 @@ const App = () => {
                 height={175}
                 value={gyroscopeData.y ? gyroscopeData.y.toFixed(3) : "N/A"}
                 currentValueText="Y axis"
-                segments={3}
+                segments={5}
                 customSegmentLabels={[
                   {
-                    text: "Good",
+                    text: "",
                     position: "INSIDE",
                     color: "#555",
                   },
                   {
-                    text: "Ok",
+                    text: "",
+                    position: "INSIDE",
+                    color: "#555",
+                  },
+                  {
+                    text: "",
                     position: "INSIDE",
                     color: "#555",
                     fontSize: "19px",
                   },
                   {
-                    text: "Bad",
+                    text: "",
+                    position: "INSIDE",
+                    color: "#555",
+                  },
+                  {
+                    text: "",
                     position: "INSIDE",
                     color: "#555",
                   },
