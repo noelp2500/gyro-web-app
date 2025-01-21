@@ -64,10 +64,10 @@ const App = () => {
               <ReactSpeedometer
                 needleHeightRatio={0.6}
                 segmentColors={["limegreen", "gold", "tomato"]}
-                maxValue={30}
-                minValue={-30}
+                maxValue={15}
+                minValue={-15}
                 width={200}
-                height={200}
+                height={175}
                 value={
                   gyroscopeData.z
                     ? (gyroscopeData.z * 57.2958).toFixed(3)
@@ -105,10 +105,10 @@ const App = () => {
               <ReactSpeedometer
                 segmentColors={["limegreen", "gold", "tomato"]}
                 needleHeightRatio={0.6}
-                maxValue={30}
-                minValue={-30}
+                maxValue={15}
+                minValue={-15}
                 width={200}
-                height={200}
+                height={175}
                 value={
                   gyroscopeData.x
                     ? (gyroscopeData.x * 57.2958).toFixed(3)
@@ -146,10 +146,10 @@ const App = () => {
               <ReactSpeedometer
                 segmentColors={["limegreen", "gold", "tomato"]}
                 needleHeightRatio={0.6}
-                maxValue={30}
-                minValue={-30}
+                maxValue={15}
+                minValue={-15}
                 width={200}
-                height={200}
+                height={175}
                 value={
                   gyroscopeData.y
                     ? (gyroscopeData.y * 57.2958).toFixed(3)
