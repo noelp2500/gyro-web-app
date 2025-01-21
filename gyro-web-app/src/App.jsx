@@ -57,9 +57,10 @@ const App = () => {
             <p>
               <strong>Alpha (Rotation around Z axis):</strong>{" "}
               <ReactSpeedometer
+                needleHeightRatio={0.6}
                 segmentColors={["limegreen", "gold", "tomato"]}
-                maxValue={10}
-                minValue={-10}
+                maxValue={30}
+                minValue={-30}
                 width={200}
                 height={200}
                 value={
@@ -93,8 +94,9 @@ const App = () => {
               <strong>Beta (Rotation around X axis):</strong>{" "}
               <ReactSpeedometer
                 segmentColors={["limegreen", "gold", "tomato"]}
-                maxValue={10}
-                minValue={-10}
+                needleHeightRatio={0.6}
+                maxValue={30}
+                minValue={-30}
                 width={200}
                 height={200}
                 value={
@@ -129,8 +131,9 @@ const App = () => {
               <strong>Gamma (Rotation around Y axis):</strong>{" "}
               <ReactSpeedometer
                 segmentColors={["limegreen", "gold", "tomato"]}
-                maxValue={10}
-                minValue={-10}
+                needleHeightRatio={0.6}
+                maxValue={30}
+                minValue={-30}
                 width={200}
                 height={200}
                 value={
