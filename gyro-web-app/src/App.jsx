@@ -44,7 +44,7 @@ const App = () => {
 
   return (
     <>
-      <h1>Gyroscope Reader</h1>
+      <h2>Gyroscope Reader</h2>
       {!permissionRequested ? (
         <div>
           <h2>Request Permission to Access Gyroscope</h2>
@@ -52,7 +52,7 @@ const App = () => {
         </div>
       ) : permissionGranted ? (
         <div>
-          <h2>Gyroscope Data</h2>
+          <h3>Gyroscope Data</h3>
           <div>
             <p>
               <strong>
