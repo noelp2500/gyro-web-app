@@ -52,10 +52,13 @@ const App = () => {
 
   return (
     <>
-      <h2>Gyroscope Reader</h2>
+      <h2>Khushboo's gyroscope app</h2>
       {!permissionRequested ? (
         <div>
-          <h2>Request Permission to Access Gyroscope</h2>
+          <h2>
+            Please press the button below to grant this app permission to your
+            inbuilt gyroscope
+          </h2>
           <button onClick={requestPermission}>Grant Permission</button>
         </div>
       ) : permissionGranted ? (
