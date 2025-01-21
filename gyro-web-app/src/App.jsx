@@ -70,7 +70,7 @@ const App = () => {
                 segments={3}
                 customSegmentLabels={[
                   {
-                    text: "Very Good",
+                    text: "Good",
                     position: "INSIDE",
                     color: "#555",
                   },
@@ -81,7 +81,7 @@ const App = () => {
                     fontSize: "19px",
                   },
                   {
-                    text: "Very Bad",
+                    text: "Bad",
                     position: "INSIDE",
                     color: "#555",
                   },
@@ -104,7 +104,7 @@ const App = () => {
                 segments={3}
                 customSegmentLabels={[
                   {
-                    text: "Very Good",
+                    text: "Good",
                     position: "INSIDE",
                     color: "#555",
                   },
@@ -115,7 +115,7 @@ const App = () => {
                     fontSize: "19px",
                   },
                   {
-                    text: "Very Bad",
+                    text: "Bad",
                     position: "INSIDE",
                     color: "#555",
                   },
@@ -139,7 +139,7 @@ const App = () => {
                 segments={3}
                 customSegmentLabels={[
                   {
-                    text: "Very Good",
+                    text: "Good",
                     position: "INSIDE",
                     color: "#555",
                   },
@@ -150,7 +150,7 @@ const App = () => {
                     fontSize: "19px",
                   },
                   {
-                    text: "Very Bad",
+                    text: "Bad",
                     position: "INSIDE",
                     color: "#555",
                   },
