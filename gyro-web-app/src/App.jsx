@@ -70,7 +70,8 @@ const App = () => {
                 Alpha (Rotation around Z axis):{" "}
                 {gyroscopeData.z
                   ? (gyroscopeData.z * 57.2958).toFixed(3)
-                  : "N/A"}
+                  : "N/A"}{" "}
+                degrees
               </strong>{" "}
               <ReactSpeedometer
                 needleHeightRatio={0.6}
@@ -111,7 +112,8 @@ const App = () => {
                 Beta (Rotation around X axis):{" "}
                 {gyroscopeData.x
                   ? (gyroscopeData.x * 57.2958).toFixed(3)
-                  : "N/A"}
+                  : "N/A"}{" "}
+                degrees
               </strong>{" "}
               <ReactSpeedometer
                 segmentColors={["limegreen", "gold", "tomato"]}
@@ -152,7 +154,8 @@ const App = () => {
                 Gamma (Rotation around Y axis):
                 {gyroscopeData.y
                   ? (gyroscopeData.y * 57.2958).toFixed(3)
-                  : "N/A"}
+                  : "N/A"}{" "}
+                degrees
               </strong>{" "}
               <ReactSpeedometer
                 segmentColors={["limegreen", "gold", "tomato"]}
