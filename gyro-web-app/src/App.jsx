@@ -57,6 +57,7 @@ const App = () => {
             <p>
               <strong>Alpha (Rotation around Z axis):</strong>{" "}
               <ReactSpeedometer
+                segmentColors={["limegreen", "gold", "tomato"]}
                 maxValue={10}
                 minValue={-10}
                 width={200}
@@ -72,18 +73,18 @@ const App = () => {
                   {
                     text: "Good",
                     position: "INSIDE",
-                    color: "#00FF00",
+                    color: "#555",
                   },
                   {
                     text: "Ok",
                     position: "INSIDE",
-                    color: "#FFFF00",
+                    color: "#555",
                     fontSize: "19px",
                   },
                   {
                     text: "Bad",
                     position: "INSIDE",
-                    color: "#FF0000",
+                    color: "#555",
                   },
                 ]}
               />
@@ -91,6 +92,7 @@ const App = () => {
             <p>
               <strong>Beta (Rotation around X axis):</strong>{" "}
               <ReactSpeedometer
+                segmentColors={["limegreen", "gold", "tomato"]}
                 maxValue={10}
                 minValue={-10}
                 width={200}
@@ -106,18 +108,18 @@ const App = () => {
                   {
                     text: "Good",
                     position: "INSIDE",
-                    color: "#00FF00",
+                    color: "#555",
                   },
                   {
                     text: "Ok",
                     position: "INSIDE",
-                    color: "#FFFF00",
+                    color: "#555",
                     fontSize: "19px",
                   },
                   {
                     text: "Bad",
                     position: "INSIDE",
-                    color: "#FF0000",
+                    color: "#555",
                   },
                 ]}
               />
@@ -126,6 +128,7 @@ const App = () => {
             <p>
               <strong>Gamma (Rotation around Y axis):</strong>{" "}
               <ReactSpeedometer
+                segmentColors={["limegreen", "gold", "tomato"]}
                 maxValue={10}
                 minValue={-10}
                 width={200}
@@ -141,18 +144,18 @@ const App = () => {
                   {
                     text: "Good",
                     position: "INSIDE",
-                    color: "#00FF00",
+                    color: "#555",
                   },
                   {
                     text: "Ok",
                     position: "INSIDE",
-                    color: "#FFFF00",
+                    color: "#555",
                     fontSize: "19px",
                   },
                   {
                     text: "Bad",
                     position: "INSIDE",
-                    color: "#FF0000",
+                    color: "#555",
                   },
                 ]}
               />
