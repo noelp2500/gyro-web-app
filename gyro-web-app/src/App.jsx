@@ -64,8 +64,8 @@ const App = () => {
               <ReactSpeedometer
                 needleHeightRatio={0.6}
                 segmentColors={["limegreen", "gold", "tomato"]}
-                maxValue={15}
-                minValue={-15}
+                maxValue={10}
+                minValue={-5}
                 width={200}
                 height={175}
                 value={
@@ -105,8 +105,8 @@ const App = () => {
               <ReactSpeedometer
                 segmentColors={["limegreen", "gold", "tomato"]}
                 needleHeightRatio={0.6}
-                maxValue={15}
-                minValue={-15}
+                maxValue={10}
+                minValue={-5}
                 width={200}
                 height={175}
                 value={
@@ -146,8 +146,8 @@ const App = () => {
               <ReactSpeedometer
                 segmentColors={["limegreen", "gold", "tomato"]}
                 needleHeightRatio={0.6}
-                maxValue={15}
-                minValue={-15}
+                maxValue={10}
+                minValue={-5}
                 width={200}
                 height={175}
                 value={
