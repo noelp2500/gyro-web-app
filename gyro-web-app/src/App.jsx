@@ -8,6 +8,8 @@ const App = () => {
   });
   const [permissionGranted, setPermissionGranted] = useState(false);
   const [permissionRequested, setPermissionRequested] = useState(false);
+  const [lastUpdate, setLastUpdate] = useState(0);
+  const updateInterval = 1000;
 
   const requestPermission = async () => {
     if (typeof DeviceMotionEvent.requestPermission === "function") {
@@ -32,7 +34,13 @@ const App = () => {
       const handleDeviceMotion = (event) => {
         if (event.rotationRate) {
           const { alpha, beta, gamma } = event.rotationRate;
-          setGyroscopeData({ z: alpha, x: beta, y: gamma });
+          const currentTime = Date.now();
+          if (currentTime - lastUpdate > updateInterval) {
+            // console.log("4444444");
+            setGyroscopeData({ z: alpha, x: beta, y: gamma });
+            setLastUpdate(currentTime);
+          }
+          // setGyroscopeData({ z: alpha, x: beta, y: gamma });
         }
       };
       window.addEventListener("devicemotion", handleDeviceMotion);
@@ -40,7 +48,7 @@ const App = () => {
         window.removeEventListener("devicemotion", handleDeviceMotion);
       };
     }
-  }, [permissionGranted]);
+  }, [permissionGranted, lastUpdate]);
 
   return (
     <>
