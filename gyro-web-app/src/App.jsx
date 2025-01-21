@@ -60,7 +60,6 @@ const App = () => {
               justifyContent: "center",
               alignItems: "center",
               height: "100vh",
-              marginLeft: "10%",
             }}
           >
             <p>
