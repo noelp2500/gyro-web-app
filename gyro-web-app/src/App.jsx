@@ -55,7 +55,12 @@ const App = () => {
           <h2>Gyroscope Data</h2>
           <div>
             <p>
-              <strong>Alpha (Rotation around Z axis):</strong>{" "}
+              <strong>
+                Alpha (Rotation around Z axis):{" "}
+                {gyroscopeData.z
+                  ? (gyroscopeData.z * 57.2958).toFixed(3)
+                  : "N/A"}
+              </strong>{" "}
               <ReactSpeedometer
                 needleHeightRatio={0.6}
                 segmentColors={["limegreen", "gold", "tomato"]}
@@ -91,7 +96,12 @@ const App = () => {
               />
             </p>
             <p>
-              <strong>Beta (Rotation around X axis):</strong>{" "}
+              <strong>
+                Beta (Rotation around X axis):{" "}
+                {gyroscopeData.x
+                  ? (gyroscopeData.x * 57.2958).toFixed(3)
+                  : "N/A"}
+              </strong>{" "}
               <ReactSpeedometer
                 segmentColors={["limegreen", "gold", "tomato"]}
                 needleHeightRatio={0.6}
@@ -125,10 +135,14 @@ const App = () => {
                   },
                 ]}
               />
-              {gyroscopeData.x ? (gyroscopeData.x * 57.2958).toFixed(3) : "N/A"}
             </p>
             <p>
-              <strong>Gamma (Rotation around Y axis):</strong>{" "}
+              <strong>
+                Gamma (Rotation around Y axis):
+                {gyroscopeData.y
+                  ? (gyroscopeData.y * 57.2958).toFixed(3)
+                  : "N/A"}
+              </strong>{" "}
               <ReactSpeedometer
                 segmentColors={["limegreen", "gold", "tomato"]}
                 needleHeightRatio={0.6}
@@ -162,7 +176,6 @@ const App = () => {
                   },
                 ]}
               />
-              {gyroscopeData.y ? (gyroscopeData.y * 57.2958).toFixed(3) : "N/A"}
             </p>
           </div>
         </div>
