@@ -68,23 +68,16 @@ const App = () => {
             <p>
               <strong>
                 Alpha (Rotation around Z axis):{" "}
-                {gyroscopeData.z
-                  ? (gyroscopeData.z * 57.2958).toFixed(3)
-                  : "N/A"}{" "}
-                degrees
+                {gyroscopeData.z ? gyroscopeData.z.toFixed(3) : "N/A"} degrees
               </strong>{" "}
               <ReactSpeedometer
                 needleHeightRatio={0.6}
                 segmentColors={["limegreen", "gold", "tomato"]}
-                maxValue={10}
-                minValue={-5}
+                maxValue={2}
+                minValue={-2}
                 width={200}
                 height={175}
-                value={
-                  gyroscopeData.z
-                    ? (gyroscopeData.z * 57.2958).toFixed(3)
-                    : "N/A"
-                }
+                value={gyroscopeData.z ? gyroscopeData.z.toFixed(3) : "N/A"}
                 currentValueText="Z axis"
                 segments={3}
                 customSegmentLabels={[
@@ -110,23 +103,16 @@ const App = () => {
             <p>
               <strong>
                 Beta (Rotation around X axis):{" "}
-                {gyroscopeData.x
-                  ? (gyroscopeData.x * 57.2958).toFixed(3)
-                  : "N/A"}{" "}
-                degrees
+                {gyroscopeData.x ? gyroscopeData.x.toFixed(3) : "N/A"} degrees
               </strong>{" "}
               <ReactSpeedometer
                 segmentColors={["limegreen", "gold", "tomato"]}
                 needleHeightRatio={0.6}
-                maxValue={10}
-                minValue={-5}
+                maxValue={2}
+                minValue={-2}
                 width={200}
                 height={175}
-                value={
-                  gyroscopeData.x
-                    ? (gyroscopeData.x * 57.2958).toFixed(3)
-                    : "N/A"
-                }
+                value={gyroscopeData.x ? gyroscopeData.x.toFixed(3) : "N/A"}
                 currentValueText="X axis"
                 segments={3}
                 customSegmentLabels={[
@@ -152,23 +138,16 @@ const App = () => {
             <p>
               <strong>
                 Gamma (Rotation around Y axis):
-                {gyroscopeData.y
-                  ? (gyroscopeData.y * 57.2958).toFixed(3)
-                  : "N/A"}{" "}
-                degrees
+                {gyroscopeData.y ? gyroscopeData.y.toFixed(3) : "N/A"} degrees
               </strong>{" "}
               <ReactSpeedometer
                 segmentColors={["limegreen", "gold", "tomato"]}
                 needleHeightRatio={0.6}
-                maxValue={10}
-                minValue={-5}
+                maxValue={2}
+                minValue={-2}
                 width={200}
                 height={175}
-                value={
-                  gyroscopeData.y
-                    ? (gyroscopeData.y * 57.2958).toFixed(3)
-                    : "N/A"
-                }
+                value={gyroscopeData.y ? gyroscopeData.y.toFixed(3) : "N/A"}
                 currentValueText="Y axis"
                 segments={3}
                 customSegmentLabels={[
