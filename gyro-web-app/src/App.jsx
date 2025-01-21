@@ -72,18 +72,18 @@ const App = () => {
                   {
                     text: "Good",
                     position: "INSIDE",
-                    color: "#555",
+                    color: "#00FF00",
                   },
                   {
                     text: "Ok",
                     position: "INSIDE",
-                    color: "#555",
+                    color: "#FFFF00",
                     fontSize: "19px",
                   },
                   {
                     text: "Bad",
                     position: "INSIDE",
-                    color: "#555",
+                    color: "#FF0000",
                   },
                 ]}
               />
@@ -106,18 +106,18 @@ const App = () => {
                   {
                     text: "Good",
                     position: "INSIDE",
-                    color: "#555",
+                    color: "#00FF00",
                   },
                   {
                     text: "Ok",
                     position: "INSIDE",
-                    color: "#555",
+                    color: "#FFFF00",
                     fontSize: "19px",
                   },
                   {
                     text: "Bad",
                     position: "INSIDE",
-                    color: "#555",
+                    color: "#FF0000",
                   },
                 ]}
               />
@@ -141,18 +141,18 @@ const App = () => {
                   {
                     text: "Good",
                     position: "INSIDE",
-                    color: "#555",
+                    color: "#00FF00",
                   },
                   {
                     text: "Ok",
                     position: "INSIDE",
-                    color: "#555",
+                    color: "#FFFF00",
                     fontSize: "19px",
                   },
                   {
                     text: "Bad",
                     position: "INSIDE",
-                    color: "#555",
+                    color: "#FF0000",
                   },
                 ]}
               />
