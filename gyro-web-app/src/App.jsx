@@ -76,8 +76,8 @@ const App = () => {
                   "tomato",
                   "limegreen",
                   "gold",
-                  "tomato",
                   "limegreen",
+                  "tomato",
                 ]}
                 maxValue={2}
                 minValue={-2}
@@ -126,8 +126,8 @@ const App = () => {
                   "tomato",
                   "limegreen",
                   "gold",
-                  "tomato",
                   "limegreen",
+                  "tomato",
                 ]}
                 needleHeightRatio={0.6}
                 maxValue={2}
@@ -177,8 +177,8 @@ const App = () => {
                   "tomato",
                   "limegreen",
                   "gold",
-                  "tomato",
                   "limegreen",
+                  "tomato",
                 ]}
                 needleHeightRatio={0.6}
                 maxValue={2}
