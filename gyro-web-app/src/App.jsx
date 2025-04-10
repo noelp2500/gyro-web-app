@@ -99,7 +99,26 @@ const App = () => {
                       )
                     : "N/A"
                 }
-                currentValueText="X,Y,Z"
+                currentValueText={
+                  gyroscopeData.z
+                    ? (() => {
+                        const val = Number(
+                          Math.sqrt(
+                            gyroscopeData.x ** 2 +
+                              gyroscopeData.y ** 2 +
+                              gyroscopeData.z ** 2
+                          ).toFixed(3)
+                        );
+                        const label =
+                          val <= 8
+                            ? "STABLE"
+                            : val <= 15
+                            ? "MODERATE"
+                            : "UNSTABLE";
+                        return `Status: ${label}`;
+                      })()
+                    : "Status: N/A"
+                }
                 // segments={3}
                 customSegmentLabels={[
                   {
