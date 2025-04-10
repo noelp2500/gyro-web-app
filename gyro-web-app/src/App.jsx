@@ -122,13 +122,13 @@ const App = () => {
                 // segments={3}
                 customSegmentLabels={[
                   {
-                    text: "STABLE",
+                    text: "",
                     position: "INSIDE",
                     color: "#555",
                     fontSize: "10px",
                   },
                   {
-                    text: "MODERATE",
+                    text: "",
                     position: "INSIDE",
                     color: "#555",
                     fontSize: "10px",
