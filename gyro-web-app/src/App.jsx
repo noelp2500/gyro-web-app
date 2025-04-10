@@ -113,16 +113,6 @@ const App = () => {
                     color: "#555",
                     fontSize: "19px",
                   },
-                  {
-                    text: "",
-                    position: "INSIDE",
-                    color: "#555",
-                  },
-                  {
-                    text: "",
-                    position: "INSIDE",
-                    color: "#555",
-                  },
                 ]}
               />
             </p>
