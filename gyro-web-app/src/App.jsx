@@ -10,6 +10,7 @@ const App = () => {
   const [permissionRequested, setPermissionRequested] = useState(false);
   const [lastUpdate, setLastUpdate] = useState(0);
   const updateInterval = 1000;
+  const toDegrees = (radian) => radian * (180 / Math.PI);
 
   const requestPermission = async () => {
     if (typeof DeviceMotionEvent.requestPermission === "function") {
@@ -79,11 +80,20 @@ const App = () => {
                   "limegreen",
                   "tomato",
                 ]}
-                maxValue={2}
-                minValue={-2}
-                width={200}
-                height={175}
-                value={gyroscopeData.z ? gyroscopeData.z.toFixed(3) : "N/A"}
+                maxValue={150}
+                minValue={-150}
+                width={300}
+                height={275}
+                value={
+                  gyroscopeData.z
+                    ? Math.sqrt(
+                        toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) ** 2 +
+                          toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) **
+                            2 +
+                          toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) ** 2
+                      )
+                    : "N/A"
+                }
                 currentValueText="Z axis"
                 segments={5}
                 customSegmentLabels={[
@@ -116,7 +126,7 @@ const App = () => {
                 ]}
               />
             </p>
-            <p>
+            {/* <p>
               <strong>
                 Beta (Rotation around X axis):{" "}
                 {gyroscopeData.x ? gyroscopeData.x.toFixed(3) : "N/A"} radians
@@ -217,7 +227,7 @@ const App = () => {
                   },
                 ]}
               />
-            </p>
+            </p> */}
           </div>
         </div>
       ) : (
