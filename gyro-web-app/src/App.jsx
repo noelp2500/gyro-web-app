@@ -100,7 +100,6 @@ const App = () => {
                 }
                 currentValueText="X,Y,Z"
                 segments={3}
-                customSegmentStops={[-20, 60, 120, 180]}
                 customSegmentLabels={[
                   {
                     text: "STABLE",
