@@ -72,8 +72,8 @@ const App = () => {
                 {gyroscopeData.z
                   ? Math.sqrt(
                       toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) ** 2 +
-                        toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) ** 2 +
-                        toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) ** 2
+                        toDegrees(parseFloat(gyroscopeData.y.toFixed(3))) ** 2 +
+                        toDegrees(parseFloat(gyroscopeData.z.toFixed(3))) ** 2
                     ).toFixed(3)
                   : "N/A"}{" "}
                 degrees
@@ -89,19 +89,19 @@ const App = () => {
                 ]}
                 maxValue={150}
                 minValue={-150}
-                width={300}
-                height={275}
+                width={450}
+                height={375}
                 value={
                   gyroscopeData.z
                     ? Math.sqrt(
                         toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) ** 2 +
-                          toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) **
+                          toDegrees(parseFloat(gyroscopeData.y.toFixed(3))) **
                             2 +
-                          toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) ** 2
+                          toDegrees(parseFloat(gyroscopeData.z.toFixed(3))) ** 2
                       ).toFixed(3)
                     : "N/A"
                 }
-                currentValueText="Z axis"
+                currentValueText="X,Y,Z"
                 segments={5}
                 customSegmentLabels={[
                   {
