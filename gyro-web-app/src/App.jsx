@@ -83,8 +83,9 @@ const App = () => {
               <ReactSpeedometer
                 needleHeightRatio={0.6}
                 segmentColors={["limegreen", "gold", "tomato"]}
-                maxValue={150}
+                maxValue={200}
                 minValue={0}
+                customSegmentStops={[0, 8, 15, 200]}
                 width={400}
                 height={375}
                 value={
@@ -99,7 +100,7 @@ const App = () => {
                     : "N/A"
                 }
                 currentValueText="X,Y,Z"
-                segments={3}
+                // segments={3}
                 customSegmentLabels={[
                   {
                     text: "STABLE",
