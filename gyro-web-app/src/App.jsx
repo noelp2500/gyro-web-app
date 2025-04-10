@@ -74,9 +74,9 @@ const App = () => {
                       toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) ** 2 +
                         toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) ** 2 +
                         toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) ** 2
-                    )
+                    ).toFixed(3)
                   : "N/A"}{" "}
-                radians
+                degrees
               </strong>{" "}
               <ReactSpeedometer
                 needleHeightRatio={0.6}
@@ -98,7 +98,7 @@ const App = () => {
                           toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) **
                             2 +
                           toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) ** 2
-                      )
+                      ).toFixed(3)
                     : "N/A"
                 }
                 currentValueText="Z axis"
