@@ -89,7 +89,7 @@ const App = () => {
                 ]}
                 maxValue={150}
                 minValue={-150}
-                width={450}
+                width={400}
                 height={375}
                 value={
                   gyroscopeData.z
