@@ -71,12 +71,12 @@ const App = () => {
                 Single Speedometer:{" "}
                 {gyroscopeData.z
                   ? Math.sqrt(
-                      toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) ** 2 +
-                        toDegrees(parseFloat(gyroscopeData.y.toFixed(3))) ** 2 +
-                        toDegrees(parseFloat(gyroscopeData.z.toFixed(3))) ** 2
+                      gyroscopeData.x ** 2 +
+                        gyroscopeData.y ** 2 +
+                        gyroscopeData.z ** 2
                     ).toFixed(3)
                   : "N/A"}{" "}
-                degrees
+                degrees/sec
               </strong>{" "}
               <ReactSpeedometer
                 needleHeightRatio={0.6}
@@ -87,17 +87,16 @@ const App = () => {
                   "limegreen",
                   "tomato",
                 ]}
-                maxValue={150}
-                minValue={-150}
+                maxValue={0}
+                minValue={150}
                 width={400}
                 height={375}
                 value={
                   gyroscopeData.z
                     ? Math.sqrt(
-                        toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) ** 2 +
-                          toDegrees(parseFloat(gyroscopeData.y.toFixed(3))) **
-                            2 +
-                          toDegrees(parseFloat(gyroscopeData.z.toFixed(3))) ** 2
+                        gyroscopeData.x ** 2 +
+                          gyroscopeData.y ** 2 +
+                          gyroscopeData.z ** 2
                       ).toFixed(3)
                     : "N/A"
                 }
