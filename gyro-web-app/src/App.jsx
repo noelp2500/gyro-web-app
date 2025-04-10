@@ -68,8 +68,15 @@ const App = () => {
           <div>
             <p>
               <strong>
-                Alpha (Rotation around Z axis):{" "}
-                {gyroscopeData.z ? gyroscopeData.z.toFixed(3) : "N/A"} radians
+                Single Speedometer:{" "}
+                {gyroscopeData.z
+                  ? Math.sqrt(
+                      toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) ** 2 +
+                        toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) ** 2 +
+                        toDegrees(parseFloat(gyroscopeData.x.toFixed(3))) ** 2
+                    )
+                  : "N/A"}{" "}
+                radians
               </strong>{" "}
               <ReactSpeedometer
                 needleHeightRatio={0.6}
