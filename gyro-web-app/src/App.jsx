@@ -87,8 +87,8 @@ const App = () => {
                   "limegreen",
                   "tomato",
                 ]}
-                maxValue={0}
-                minValue={150}
+                maxValue={150}
+                minValue={0}
                 width={400}
                 height={375}
                 value={
